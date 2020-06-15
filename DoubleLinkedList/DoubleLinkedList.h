@@ -4,7 +4,7 @@
 // iioii iiiaiyai ia oaaeiiu
 using ValueType = double;
 
-class LinkedList2
+class LinkedList
 
 {
 
@@ -30,14 +30,14 @@ public:
 
 	////
 
-	LinkedList2(); //+
-	LinkedList2(const LinkedList2& copyList);//+
-	LinkedList2& operator=(const LinkedList2& copyList);//+
+	LinkedList(); //+
+	LinkedList(const LinkedList& copyList);//+
+	LinkedList& operator=(const LinkedList& copyList);//+
 
-	LinkedList2(LinkedList2&& moveList) noexcept;//+
-	LinkedList2& operator=(LinkedList2&& moveList) noexcept;//+
+	LinkedList(LinkedList&& moveList) noexcept;//+
+	LinkedList& operator=(LinkedList&& moveList) noexcept;//+
 
-	~LinkedList2(); //+
+	~LinkedList(); //+
 
 	////
 
@@ -45,7 +45,7 @@ public:
 	ValueType& operator[](const size_t pos) const; //+
 
 	// ainooi e oceo ii eiaaeno
-	LinkedList2::Node* getNode(const size_t pos) const; //+
+	LinkedList::Node* getNode(const size_t pos) const; //+
 
 	// anoaaea yeaiaioa ii eiaaeno, nia?aea euai, eoaa anoaaeyou (I(n)), iioii anoaaeyai (O(1))
 	void insert(const size_t pos, const ValueType& value); //+
@@ -72,8 +72,8 @@ public:
 
 	// ?acai?io nienea
 	void reverse();						// eciaiaiea oaeouaai nienea       +
-	LinkedList2 reverse() const;			// iie?aiea iiaiai nienea (aey eiinoaioiuo iauaeoia)
-	LinkedList2 getReverseList() const;	// ?oiau iaeiinoaioiue iauaeo oi?a iia aica?auaou iiaue ?acaa?iooue nienie
+	LinkedList reverse() const;			// iie?aiea iiaiai nienea (aey eiinoaioiuo iauaeoia)
+	LinkedList getReverseList() const;	// ?oiau iaeiinoaioiue iauaeo oi?a iia aica?auaou iiaue ?acaa?iooue nienie
 
 	size_t size() const;//+
 	
