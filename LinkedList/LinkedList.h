@@ -1,73 +1,84 @@
 #pragma once
 
-// РїРѕС‚РѕРј РїРѕРјРµРЅСЏРµРј РЅР° С€Р°Р±Р»РѕРЅС‹
+// потом поменяем на шаблоны
 using ValueType = double;
 
 class LinkedList
+
 {
-	// РєР»Р°СЃСЃ СѓР·Р»Р° СЃРїРёСЃРєР°
-	// РїРѕ СЃРІРѕРµР№ СЃСѓС‚Рё, РјРѕР¶РµС‚ СЃРѕРґРµСЂР¶Р°С‚СЊ Р»СЋР±С‹Рµ РґР°РЅРЅС‹Рµ,
-	// РјРѕР¶РЅРѕ СЂРµР°Р»РёР·РѕРІР°С‚СЊ Рё Р°СЃСЃРѕС†РёР°С‚РёРІРЅС‹Р№ РјР°СЃСЃРёРІ, РїСЂРѕСЃС‚Рѕ РґРѕР±Р°РІРёРІ 
-	// РїРѕР»Рµ СЃ РєР»СЋС‡РµРј РІ СѓР·РµР» Рё, СЃ СѓС‡РµС‚РѕРј СЌС‚РѕРіРѕ, РїРѕРјРµРЅСЏС‚СЊ РјРµС‚РѕРґС‹ LinkedList 
-	// (РґРѕСЃС‚СѓРї РїРѕ РєР»СЋС‡Сѓ, РїРѕРёСЃРє РїРѕ РєР»СЋС‡Сѓ Рё С‚.Рґ.)
+
+	// класс узла списка
+	// по своей сути, может содержать любые данные,
+	// можно реализовать и ассоциативный массив, просто добавив
+	// поле с ключем в узел и, с учетом этого, поменять методы LinkedList
+	// (доступ по ключу, поиск по ключу и т.д.)
 	struct Node {
 		Node(const ValueType& value, Node* next = nullptr);
 		~Node();
 
-		void insertNext(const ValueType& value);
-		void removeNext();
+		void insertNext(const ValueType& value); //+
+		void removeNext(); //+
 
 		ValueType value;
 		Node* next;
+
 	};
 
 public:
-	////
-	LinkedList();
-	LinkedList(const LinkedList& copyList);
-	LinkedList& operator=(const LinkedList& copyList);
 
-	LinkedList(LinkedList&& moveList) noexcept;
-	LinkedList& operator=(LinkedList&& moveList) noexcept;
-
-	~LinkedList();
 	////
 
-	// РґРѕСЃС‚СѓРї Рє Р·РЅР°С‡РµРЅРёСЋ СЌР»РµРјРµРЅС‚Р° РїРѕ РёРЅРґРµРєСЃСѓ
-	const ValueType& operator[](const size_t pos) const;
-	ValueType& operator[](const size_t pos);
-	// РґРѕСЃС‚СѓРї Рє СѓР·Р»Сѓ РїРѕ РёРЅРґРµРєСЃСѓ
-	LinkedList::Node* getNode(const size_t pos) const;
-	
-	// РІСЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р° РїРѕ РёРЅРґРµРєСЃСѓ, СЃРЅР°С‡Р°Р»Р° РёС‰РµРј, РєСѓРґР° РІСЃС‚Р°РІР»СЏС‚СЊ (Рћ(n)), РїРѕС‚РѕРј РІСЃС‚Р°РІР»СЏРµРј (O(1))
-	void insert(const size_t pos, const ValueType& value);
-	// РІСЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р° РїРѕСЃР»Рµ СѓР·Р»Р°, (O(1))
-	void insertAfterNode(Node* node, const ValueType& value);
-	// РІСЃС‚Р°РІРєР° РІ РєРѕРЅРµС† (Рћ(n))
-	void pushBack(const ValueType& value);
-	// РІСЃС‚Р°РІРєР° РІ РЅР°С‡Р°Р»Рѕ (Рћ(1))
-	void pushFront(const ValueType& value);
+	LinkedList(); //+
+	LinkedList(const LinkedList& copyList); //+
+	LinkedList& operator=(const LinkedList& copyList); //+
 
-	// СѓРґР°Р»РµРЅРёРµ
-	void remove(const size_t pos);
-	void removeNextNode(Node* node);
-	void removeFront();
-	void removeBack();
-	
-	// РїРѕРёСЃРє, Рћ(n)
-	long long int findIndex(const ValueType& value) const;
-	Node* findNode(const ValueType& value) const;
+	LinkedList(LinkedList&& moveList) noexcept; //+
+	LinkedList& operator=(LinkedList&& moveList) noexcept; //+
 
-	// СЂР°Р·РІРѕСЂРѕС‚ СЃРїРёСЃРєР°
-	void reverse();						// РёР·РјРµРЅРµРЅРёРµ С‚РµРєСѓС‰РµРіРѕ СЃРїРёСЃРєР°
-	LinkedList reverse() const;			// РїРѕР»С‡РµРЅРёРµ РЅРѕРІРѕРіРѕ СЃРїРёСЃРєР° (РґР»СЏ РєРѕРЅСЃС‚Р°РЅС‚РЅС‹С… РѕР±СЉРµРєС‚РѕРІ)
-	LinkedList getReverseList() const;	// С‡С‚РѕР±С‹ РЅРµРєРѕРЅСЃС‚Р°РЅС‚РЅС‹Р№ РѕР±СЉРµРєС‚ С‚РѕР¶Рµ РјРѕРі РІРѕР·РІСЂР°С‰Р°С‚СЊ РЅРѕРІС‹Р№ СЂР°Р·РІРµСЂРЅСѓС‚С‹Р№ СЃРїРёСЃРѕРє
+	~LinkedList(); //+
 
-	size_t size() const;
+	////
+
+	// доступ к значению элемента по индексу
+	ValueType& operator[](const size_t pos) const; //+
+
+	// доступ к узлу по индексу
+	LinkedList::Node* getNode(const size_t pos) const; //+
+
+	// вставка элемента по индексу, сначала ищем, куда вставлять (О(n)), потом вставляем (O(1))
+	void insert(const size_t pos, const ValueType& value); //+
+
+	// вставка элемента после узла, (O(1))
+	void insertAfterNode(Node* node, const ValueType& value); //+
+
+	// вставка в конец (О(n))
+	void pushBack(const ValueType& value); //+
+
+	// вставка в начало (О(1))
+	void pushFront(const ValueType& value); //+
+
+	// удаление
+	void remove(const size_t pos); //+
+	void removeNextNode(Node* node);//+
+	void removeFront(); //+
+	void removeBack(); //+
+
+	// поиск, О(n)
+	long long int findIndex(const ValueType& value) const;//+
+	Node* findNode(const ValueType& value) const;//+
+
+	// разворот списка
+	void reverse();						// изменение текущего списка    +
+	LinkedList reverse() const;			// полчение нового списка (для константных объектов)
+	LinkedList getReverseList() const;	// чтобы неконстантный объект тоже мог возвращать новый развернутый список
+
+	size_t size() const; //+
+
+
 private:
 	Node*	_head;
 	size_t	_size;
 
-	void forceNodeDelete(Node* node);
-};
+	void forceNodeDelete(Node* node); //+
 
+};

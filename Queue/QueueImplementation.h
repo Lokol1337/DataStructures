@@ -1,5 +1,6 @@
-﻿#pragma once
-#include <cstdlib>
+#pragma once
+#include <cstddef>
+
 // приходится тянуть ValueType во все места,
 // наглядная демонстрация того, почему с шаблонами было бы легче.
 // Ждем, когда дойдете до этого на МиСП.
@@ -8,18 +9,20 @@ class ListStack;
 class VectorStack;
 
 // интерфейс для конкретных реализаций контейнера для стека
-class StackImplementation {
+class QueueImplementation {
+
 public:
 	// добавление в хвост
-	virtual void push(const ValueType& value) = 0;
+	virtual void enqueue(const ValueType& value) = 0;
 	// удаление с хвоста
-	virtual void pop() = 0;
+	//virtual void realdequeue() = 0;
+	virtual void dequeue() = 0;
 	// посмотреть элемент в хвосте
-	virtual const ValueType& top() const = 0;
+	virtual const ValueType& front() const = 0;
 	// проверка на пустоту
 	virtual bool isEmpty() const = 0;
 	// размер 
 	virtual size_t size() const = 0;
 	// виртуальный деструктор
-	~StackImplementation() = default;
+	~QueueImplementation() = default;
 };

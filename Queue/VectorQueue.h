@@ -1,19 +1,25 @@
-﻿#pragma once
-#include "StackImplementation.h"
+#pragma once
+#include "QueueImplementation.h"
 #include "MyVector.h"
+#include <cstddef>
+
  // меняете на include вашего вектора
 
 // вариант с использованием ранее написанного вектора и множественного наследования
 // если бы вектор не был реализован, то было бы наследование только от интерфейса
 // множественное наследование можно заменить на композицию
-class VectorStack : public StackImplementation, public MyVector
+class VectorQueue : public QueueImplementation, public MyVector
 {
 	public	:
-		VectorStack();
-		void push(const ValueType& value);
-	void pop();
-	const ValueType& top() const;
+
+	VectorQueue();
+	void enqueue(const ValueType& value);
+	void realdequeue();
+	void dequeue();
+	const ValueType& front() const;
 	bool isEmpty() const;
 	size_t size() const;
+	private :
+		size_t _hi = 0;
 };
 

@@ -1,22 +1,25 @@
-﻿#pragma once
+#pragma once
 
-#include "StackImplementation.h"
+#include "QueueImplementation.h"
 #include "LinkedList.h"
+#include <cstddef>
+
  // меняете на include вашего листа
 
 // вариант с использованием ранее написанного списка и множественного наследования
 // если бы список не был реализован, то было бы наследование только от интерфейса
 // множественное наследование можно заменить на композицию
-class ListStack : public StackImplementation, public LinkedList
+class ListQueue : public QueueImplementation, public LinkedList
 {
 
 	public:
-		ListStack();
-	void push(const ValueType& value);
+		ListQueue();
+
+	void enqueue(const ValueType& value);
 	// удаление с хвоста
-	void pop();
+	void dequeue();
 	// посмотреть элемент в хвосте
-	const ValueType& top() const;
+	const ValueType& front() const;
 	// проверка на пустоту
 	bool isEmpty() const;
 	// размер 
