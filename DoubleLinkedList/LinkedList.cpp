@@ -1,7 +1,7 @@
 //DoubleLinkedList
 //
 #include <iostream>
-#include "DoubleLinkedList.h"
+#include "LinkedList.h"
 #include <cassert>
 #include <cstddef>
 
