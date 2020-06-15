@@ -3,6 +3,7 @@
 #include "MyVector.h"
 #include <algorithm>
 #include <stdexcept>
+#include <cstddef>
 
 using namespace std;
 
@@ -620,13 +621,13 @@ MyVector sortedSquares(const MyVector& vec, SortedStrategy strategy)
 }
 
 
-int main()
+/*int main()
 {
 	MyVector a;
 	a.pushBack(2);
-	//a.find(1,true);
+	a.find(1,true);
 	a = a;
-	/*for (int i = -10; i <= 10; i++)
+	for (int i = -10; i <= 10; i++)
 	{
 		a[i + 10] = i;
 	}
@@ -653,5 +654,5 @@ int main()
 	}
 	cout << endl;
 	cout << a.size() << endl;
-	cout << a.capacity();*/
-}
+	cout << a.capacity();
+}*/

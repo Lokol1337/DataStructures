@@ -5,6 +5,7 @@
 //#include <utility>
 //#include <execution>
 #include <stdexcept>
+#include <cstddef>
 
 using namespace std;
 
@@ -221,7 +222,7 @@ void LinkedList::removeFront()
 
 void LinkedList::removeBack()
 {
-    	if (_head)
+    if (_head)
 	{
 		if (_size >= 2)
 		{
@@ -243,7 +244,7 @@ void LinkedList::removeBack()
 			_size--;
 		}
 
-		if (_size == 1)
+		else if (_size == 1)
 		{
 			delete _head;
 			_head = nullptr;
@@ -348,10 +349,10 @@ void LinkedList::forceNodeDelete(Node* node)
 }
 
 
-int main() {
+/*int main() {
 
 	LinkedList a;
-	/*a.pushBack(2);
+	a.pushBack(2);
 	a.pushBack(3);
 	a.pushBack(4);
 	a.pushBack(5);
@@ -361,8 +362,8 @@ int main() {
 	a.removeBack();
 	a.removeBack();
 	a.removeBack();
-	//cout << a[2];
-	cout << b[2];*/
+	cout << a[2];
+	cout << b[2];
 	
 	a.remove(1);
-}
+}*/

@@ -1,4 +1,5 @@
 #pragma once
+#include <cstddef>
 
 // стратегия изменения capacity
 enum class ResizeStrategy {
